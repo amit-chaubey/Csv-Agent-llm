@@ -4,10 +4,6 @@ import pandas as pd
 import os
 from langchain_openai import ChatOpenAI
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
 
 # Set page configuration
 st.set_page_config(
@@ -20,8 +16,8 @@ st.set_page_config(
 st.title("CSV/Excel Analysis Chatbot")
 st.write("Upload your file and start chatting with your data!")
 
-# Get API key from environment variable
-api_key = os.getenv("OPENAI_API_KEY")
+# Get API key from Streamlit secrets
+api_key = st.secrets["OPENAI_API_KEY"]
 
 # For debugging - show first 10 chars of API key (remove in production)
 if api_key:
